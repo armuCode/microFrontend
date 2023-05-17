@@ -1,20 +1,20 @@
 name: deploy-container
- 
+
 on:
   push:
     branches:
       - main
     paths:
       - "packages/container/**"
- 
+
 defaults:
   run:
     working-directory: packages/container
- 
+
 jobs:
   build:
     runs-on: ubuntu-latest
- 
+
     steps:
       - uses: actions/checkout@v2
       - run: npm install
@@ -29,3 +29,6 @@ jobs:
           aws-region: us-east-2
       - name: Copy files to the production website with the AWS CLI
         run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
+# If you want to write
+# a block-commented Haiku
+# you'll need three pound signs
